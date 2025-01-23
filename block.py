@@ -11,9 +11,18 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 
-paddle_width = 100
-paddle_height = 10
-paddle = pygame.Rect(screen_width // 2 - paddle_width // 2, screen_height - 20, paddle_width, paddle_height)
+class Paddle():
+    def __init___(self):
+        self.width = 100
+        self.height = 10
+        self = pygame.Rect(screen_width // 2 - self.width // 2, screen_height - 20, self.width, self.height)
+        
+
+# paddle_width = 100
+# paddle_height = 10
+# paddle = pygame.Rect(screen_width // 2 - paddle_width // 2, screen_height - 20, paddle_width, paddle_height)
+
+paddle = Paddle()
 
 ball_diameter = 10
 ball = pygame.Rect(screen_width // 2 - ball_diameter // 2, screen_height // 2 - ball_diameter // 2, ball_diameter, ball_diameter)
