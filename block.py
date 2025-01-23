@@ -15,19 +15,33 @@ class Paddle():
     def __init___(self):
         self.width = 100
         self.height = 10
-        self = pygame.Rect(screen_width // 2 - self.width // 2, screen_height - 20, self.width, self.height)
+        self.rect = pygame.Rect(screen_width // 2 - self.width // 2, screen_height - 20, self.width, self.height)
         
 
 # paddle_width = 100
 # paddle_height = 10
 # paddle = pygame.Rect(screen_width // 2 - paddle_width // 2, screen_height - 20, paddle_width, paddle_height)
 
+class Ball():
+    def __init__(self):
+        self.diameter = 10
+        self.rect = pygame.Rect(screen_width // 2 - self.diameter // 2, screen_height // 2 - self.diameter // 2, self.diameter, self.diameter)
+        # self = pygame.Rect(screen_width // 2 - self.diameter // 2, screen_height // 2 - self.diameter // 2, self.diameter, self.diameter)
+        self.speed_x = 3 * random.choice((1, -1))
+        self.speed_y = 3 * random.choice((1, -1))
+
+    def move(self):
+        self.rect.x += self.speed_x
+        self.rect.y += self.speed_y
+
 paddle = Paddle()
 
-ball_diameter = 10
-ball = pygame.Rect(screen_width // 2 - ball_diameter // 2, screen_height // 2 - ball_diameter // 2, ball_diameter, ball_diameter)
-ball_speed_x = 3 * random.choice((1, -1))
-ball_speed_y = 3 * random.choice((1, -1))
+# ball_diameter = 10
+# ball = pygame.Rect(screen_width // 2 - ball_diameter // 2, screen_height // 2 - ball_diameter // 2, ball_diameter, ball_diameter)
+# ball_speed_x = 3 * random.choice((1, -1))
+# ball_speed_y = 3 * random.choice((1, -1))
+
+ball = Ball()
 
 block_list = []
 block_width = 60
@@ -51,7 +65,8 @@ while running:
         paddle.move_ip(5, 0)
 
     # ボールの動き
-    ball.move_ip(ball_speed_x, ball_speed_y)
+    # ball.move_ip(ball_speed_x, ball_speed_y)
+    ball.move()
 
     # ボールが画面の端に当たったら反射
     if ball.left <= 0 or ball.right >= screen_width:
